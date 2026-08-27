@@ -6,7 +6,7 @@ function App(): React.JSX.Element {
         <div className="App">
             <header className="App-header">
                 Mohammed Fofana UD CISC275 with React Hooks and TypeScript
-                <h1> Hello World</h1>
+                <p> Hello World</p>
             </header>
             <p>
                 Edit <code>src/App.tsx</code> and save. This page will
