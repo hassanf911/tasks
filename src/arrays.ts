@@ -1,38 +1,83 @@
 /**
  * Consume an array of numbers, and return a new array containing
- * JUST the first and last number. If there are no elements, return
+ * JUST the first and last number. If there are
+ * no elements, return
  * an empty array. If there is one element, the resulting list should
  * the number twice.
  */
 export function bookEndList(numbers: number[]): number[] {
-    return numbers;
+    const newArray = [...numbers];
+    if (numbers.length === 0) {
+        return [];
+    }
+
+    if (numbers.length === 1) {
+        //use normal
+
+        newArray.push(numbers[0]);
+        return newArray;
+    }
+
+    newArray.splice(1, numbers.length - 2);
+    return newArray;
+    //returning splice gives the deleted elements if u save it to a new array
+    //make sure to return the original array u removed
+    //const firstLast = numbers.filter((num: number): boolean => num[i] === 0 || num[i]===-1 );
+
+    // const lowPrices = prices.filter((price: number): boolean => price < 10);
+    //const doubled = prices.map((price: number): number => price * 2);
+    //console.log(doubled);
 }
 
 /**
- * Consume an array of numbers, and return a new array where each
+ * Consume an array of numbers, and return a new array
+ *  where each
  * number has been tripled (multiplied by 3).
+ * const tripled = numbers.map((num: number): number => num*3);
  */
 export function tripleNumbers(numbers: number[]): number[] {
-    return numbers;
+    const tripled = numbers.map((num: number): number => num * 3);
+    return tripled;
+    //const doubled = prices.map((price: number): number => price * 2);
 }
 
 /**
- * Consume an array of strings and convert them to integers. If
+ * Consume an array of strings and convert them to integers.
+ * If
  * the number cannot be parsed as an integer, convert it to 0 instead.
  */
 export function stringsToIntegers(numbers: string[]): number[] {
-    return [];
+    // If the price is less than 10, double the price,
+    //  otherwise use the price unchanged
+    //if price <10 double it otherwise (?) keep iot
+    //  (price: number): number => (price < 10 ? 2 * price : price),
+    const toInt = numbers.map((num: string): number =>
+        Number.isNaN(parseInt(num)) ? Number("0") : Number(num),
+    );
+    //? means else if statement.
+    // it executes the code before the : if true, and the code
+    //  after the : if falsey. so condition if true do this: else do this
+    //  or just //Number(num)
+    return toInt;
 }
 
 /**
  * Consume an array of strings and return them as numbers. Note that
- * the strings MAY have "$" symbols at the beginning, in which case
+ * the strings MAY have "$" symbols at the beginning,
+ * in which case
  * those should be removed. If the result cannot be parsed as an integer,
  * convert it to 0 instead.
  */
 // Remember, you can write functions as lambdas too! They work exactly the same.
 export const removeDollars = (amounts: string[]): number[] => {
-    return [];
+    const noCash = amounts.map((amount: string): string =>
+        amount[0] === "$" ? amount.slice(1) : amount,
+    );
+    const removeD = noCash.map((amount: string): number =>
+        Number.isNaN(parseInt(amount)) ? Number("0") : Number(amount),
+    );
+
+    return removeD;
 };
 
 /**
