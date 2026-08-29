@@ -72,4 +72,12 @@ function App(): React.JSX.Element {
     );
 }
 
+type letterGrade = "A" | "B" | "C" | "D";
+let grade: letterGrade;
+grade = "A";
+console.log(grade);
 export default App;
+
+export function Add(first: number, second: number): number {
+    return first + second;
+}
