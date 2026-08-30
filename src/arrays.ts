@@ -82,11 +82,18 @@ export const removeDollars = (amounts: string[]): number[] => {
 
 /**
  * Consume an array of messages and return a new list of the messages. However, any
- * string that ends in "!" should be made uppercase. Also, remove any strings that end
+ * string that ends in "!" should be made uppercase. Also, remove any strings that end-> Filter
  * in question marks ("?").
  */
 export const shoutIfExclaiming = (messages: string[]): string[] => {
-    return [];
+    //const removeQ = messages.map((message: string): string =>  message.slice(-1) === "?" ? message.slice(-1): message);
+    const removeQ = messages.filter(
+        (message: string): boolean => message.slice(-1) !== "?",
+    ); //removes any string ending in ?, filter neds bool
+    const makeUpper = removeQ.map((message: string): string =>
+        message.slice(-1) === "!" ? message.toUpperCase() : message,
+    );
+    return makeUpper; //condition to check if passes do this: otherwise do this
 };
 
 /**
@@ -94,7 +101,9 @@ export const shoutIfExclaiming = (messages: string[]): string[] => {
  * 4 letters long.
  */
 export function countShortWords(words: string[]): number {
-    return 0;
+    const less4 = words.filter((word: string): boolean => word.length < 4); //less4 becomes the new array
+    //filter always returns a boolean
+    return less4.length;
 }
 
 /**
@@ -103,9 +112,18 @@ export function countShortWords(words: string[]): number {
  * then return true.
  */
 export function allRGB(colors: string[]): boolean {
-    return false;
+    if (colors.length === 0) {
+        return true;
+    }
+    const isRGB = colors.every(
+        (color: string): boolean =>
+            color === "red" || color === "blue" || color === "green",
+    );
+    //every checks if every element passes a condition and returns the boolean
+    //so we just return the result of doing every
+    return isRGB;
 }
-
+//THESE ARE CALLED ARRAY OPERATIONS
 /**
  * Consumes an array of numbers, and produces a string representation of the
  * numbers being added together along with their actual sum.
@@ -114,7 +132,20 @@ export function allRGB(colors: string[]): boolean {
  * And the array [] would become "0=0".
  */
 export function makeMath(addends: number[]): string {
-    return "";
+    if (addends.length === 0) {
+        //empty array check
+        return "0=0";
+    }
+    //likely have to use join to combine the elements
+    //first find the total using reduce
+    const getSum = addends.reduce(
+        (currentTotal: number, num: number): number => (currentTotal += num),
+        0,
+    );
+    //then join that result with the others using join
+    let start: string = getSum.toString() + "=";
+    const joined = addends.join("+");
+    return start + joined;
 }
 
 /**
@@ -127,5 +158,28 @@ export function makeMath(addends: number[]): string {
  * And the array [1, 9, 7] would become [1, 9, 7, 17]
  */
 export function injectPositive(values: number[]): number[] {
-    return [];
+    //likely need reduce to get total
+    const getTotal = values.reduce(
+        (currentTotal: number, num: number): number => (currentTotal += num),
+        0,
+    );
+    const checkAllPos = values.every((value: number): boolean => value >= 0);
+
+    const toAppend = values.map((value: number): number => value);
+    if (checkAllPos) {
+        toAppend.push(getTotal);
+        return toAppend;
+    }
+    const getNegIndex = values.findIndex((value: number): boolean => value < 0);
+    //insert the sum fo all previous numbers in the list directly after the first neg number
+    //let prevTotal: number = toAppend.slice(0, getNegIndex);
+    const prevTotal = toAppend
+        .slice(0, getNegIndex)
+        .reduce((currTotal: number, num: number): number => currTotal + num, 0);
+    toAppend.splice(getNegIndex + 1, 0, prevTotal);
+    //we want to insert after the neg index so +1, we delete nothing,
+    //and insert the prev total
+
+    //thenm a opeartion that checks for neg numbers or if all are positive
+    return toAppend;
 }
