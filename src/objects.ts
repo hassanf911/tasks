@@ -1,6 +1,7 @@
 import { Question, QuestionType } from "./interfaces/question";
 
 /**
+<<<<<<< HEAD
  * Create a new blank question with the given `id`, `name`, and `
  * type. The `body` and
  * `expected` should be empty strings, t
@@ -8,11 +9,18 @@ import { Question, QuestionType } from "./interfaces/question";
  * should default to 1, and `published` should default to false.
  */
 //AN EXAMPLE OF INITATING A UPDATED BLANK OBJECT USING AN INTERFACE AS ORIG HLUEPRINT
+=======
+ * Create a new blank question with the given `id`, `name`, and `type. The `body` and
+ * `expected` should be empty strings, the `options` should be an empty list, the `points`
+ * should default to 1, and `published` should default to false.
+ */
+>>>>>>> upstream/task-nested
 export function makeBlankQuestion(
     id: number,
     name: string,
     type: QuestionType
 ): Question {
+<<<<<<< HEAD
     return {id: id, name: name, type: type, body: "", expected: "",
         options: [], points: 1, published: false};
 }
@@ -21,6 +29,10 @@ export function makeBlankQuestion(
 //Allows u to enforce some type of rulss
 //spread is used to immutably update an object by creating a new object using
 //old values
+=======
+    return {};
+}
+>>>>>>> upstream/task-nested
 
 /**
  * Consumes a question and a potential `answer`, and returns whether or not
@@ -30,7 +42,11 @@ export function makeBlankQuestion(
  * HINT: Look up the `trim` and `toLowerCase` functions.
  */
 export function isCorrect(question: Question, answer: string): boolean {
+<<<<<<< HEAD
     return answer.trim().toLowerCase() == question.expected.trim().toLowerCase();
+=======
+    return false;
+>>>>>>> upstream/task-nested
 }
 
 /**
@@ -40,6 +56,7 @@ export function isCorrect(question: Question, answer: string): boolean {
  * be exactly one of the options.
  */
 export function isValid(question: Question, answer: string): boolean {
+<<<<<<< HEAD
     if (question.type == 'multiple_choice_question'){
           const check_in = question.options.some((ques: string): boolean =>
              ques == answer); //check if anyone of the strings are = to our answe
@@ -47,6 +64,9 @@ export function isValid(question: Question, answer: string): boolean {
     }
     return true;
 
+=======
+    return false;
+>>>>>>> upstream/task-nested
 }
 
 /**
@@ -56,9 +76,13 @@ export function isValid(question: Question, answer: string): boolean {
  * name "My First Question" would become "9: My First Q".
  */
 export function toShortForm(question: Question): string {
+<<<<<<< HEAD
     let newS: string = "";
     newS = question.id + ": " + question.name.slice(0, 10);
     return newS;
+=======
+    return "";
+>>>>>>> upstream/task-nested
 }
 
 /**
@@ -79,6 +103,7 @@ export function toShortForm(question: Question): string {
  * Check the unit tests for more examples of what this looks like!
  */
 export function toMarkdown(question: Question): string {
+<<<<<<< HEAD
     let first: string = "# "  + question.name;
     let second: string = question.body;
     
@@ -91,6 +116,9 @@ export function toMarkdown(question: Question): string {
         return first + "\n" + second  + moptions.join('');
     }
     return first + "\n" + second;
+=======
+    return "";
+>>>>>>> upstream/task-nested
 }
 
 /**
@@ -98,6 +126,7 @@ export function toMarkdown(question: Question): string {
  * `newName`.
  */
 export function renameQuestion(question: Question, newName: string): Question {
+<<<<<<< HEAD
     const newQuestion = {...question, name: newName};
     //with function based coding we update objects immutably by
     //creating a new object copying old values using spread ...
@@ -105,6 +134,9 @@ export function renameQuestion(question: Question, newName: string): Question {
     //In coptrast to OOP where the state of the class is updated over time 
     return newQuestion;
 
+=======
+    return question;
+>>>>>>> upstream/task-nested
 }
 
 /**
@@ -113,6 +145,7 @@ export function renameQuestion(question: Question, newName: string): Question {
  * published; if it was published, now it should be not published.
  */
 export function publishQuestion(question: Question): Question {
+<<<<<<< HEAD
     let invert: boolean;
     if (question.published){
         invert = false;
@@ -147,20 +180,44 @@ export function duplicateQuestion(id: number, oldQuestion: Question): Question {
  *  MUST have
  * its own separate copy of the `options` list, rather than the same
  *  reference
+=======
+    return question;
+}
+
+/**
+ * Create a new question based on the old question, copying over its `body`, `type`,
+ * `options`, `expected`, and `points` without changes. The `name` should be copied
+ * over as "Copy of ORIGINAL NAME" (e.g., so "Question 1" would become "Copy of Question 1").
+ * The `published` field should be reset to false.
+ */
+export function duplicateQuestion(id: number, oldQuestion: Question): Question {
+    return oldQuestion;
+}
+
+/**
+ * Return a new version of the given question, with the `newOption` added to
+ * the list of existing `options`. Remember that the new Question MUST have
+ * its own separate copy of the `options` list, rather than the same reference
+>>>>>>> upstream/task-nested
  * to the original question's list!
  * Check out the subsection about "Nested Fields" for more information.
  */
 export function addOption(question: Question, newOption: string): Question {
+<<<<<<< HEAD
     const newQuestion = {...question, 
         options: [...question.options, newOption] };
         //with fields that are datat structures like arrays
         //we must do a nested (deep) copy using [...obj.field]
         //and can update by , value
         return newQuestion;
+=======
+    return question;
+>>>>>>> upstream/task-nested
 }
 
 /**
  * Consumes an id, name, and two questions, and produces a new question.
+<<<<<<< HEAD
  * The new question will use the 
  * `body`, `type`, `options`, and `expected` of the
  * `contentQuestion`. The second question will provide the `points`.
@@ -169,6 +226,13 @@ export function addOption(question: Question, newOption: string): Question {
  * just an object with a `points`
  * field; but the function call would be the same as if 
  * it were a `Question` type!
+=======
+ * The new question will use the `body`, `type`, `options`, and `expected` of the
+ * `contentQuestion`. The second question will provide the `points`.
+ * The `published` status should be set to false.
+ * Notice that the second Question is provided as just an object with a `points`
+ * field; but the function call would be the same as if it were a `Question` type!
+>>>>>>> upstream/task-nested
  */
 export function mergeQuestion(
     id: number,
@@ -176,10 +240,14 @@ export function mergeQuestion(
     contentQuestion: Question,
     { points }: { points: number }
 ): Question {
+<<<<<<< HEAD
    // const copyQuestion = { ...contentQuestion, name: name, points: points, published: false, id: id       ;
    // const NewQuestion ={...copyQuestion}
   //  const copyQuestion = {};
     return {
         ...contentQuestion, name: name, points: points, published: false, id: id
     }
+=======
+    return contentQuestion;
+>>>>>>> upstream/task-nested
 }
