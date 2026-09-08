@@ -176,7 +176,7 @@ export function mergeQuestion(
     contentQuestion: Question,
     { points }: { points: number }
 ): Question {
-   // const copyQuestion = {...contentQuestion};
+   // const copyQuestion = { ...contentQuestion, name: name, points: points, published: false, id: id       ;
    // const NewQuestion ={...copyQuestion}
   //  const copyQuestion = {};
     return {
