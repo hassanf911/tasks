@@ -57,7 +57,14 @@ export function stringsToIntegers(numbers: string[]): number[] {
     //? means else if statement.
     // it executes the code before the : if true, and the code
     //  after the : if falsey. so condition if true do this: else do this
-    //  or just //Number(num)
+    //  or just //Number(num). //const x ='5 const y=3 console.log(y+ -x) gives -2 while y+ +x gives 8
+    //triple or strict  ==== normally checks by reference rather than content. so const x= '5' const y=4+1. x is not === y
+    //even tho they have the same content
+    ///double = only looks at if they look equal so 5 == '5' is true while 5 === '5' is false. so (0.1+0.2 === 0.3) is false 
+    //mdn docs, pythontutor
+    //z refers to the same object in memory as x. So anything that happpens to x happens to z
+    //While y has the same contents as x, x refers to a different obj than y
+    //references do not exppose thier memory address but pointers do allowing u do pointer arithmetic
     return toInt;
 }
 
@@ -183,3 +190,18 @@ export function injectPositive(values: number[]): number[] {
     //thenm a opeartion that checks for neg numbers or if all are positive
     return toAppend;
 }
+
+
+/*
+console.log( "Should we go outside or play on the computer?",
+        isRainy ? "No , stay indoors":  ( 
+                humidity >50          ? "no def stay in doors":
+                (temperature > 70   ? "oh heck no": "YEAH LETS GO TO THE")
+        )
+    condition, tert check, run if fails: else do this if passes
+
+
+)
+
+
+*/
