@@ -74,7 +74,7 @@ export function sumPoints(questions: Question[]): number {
  * Consumes an array of questions and returns the sum total of the PUBLISHED questions.
  */
 export function sumPublishedPoints(questions: Question[]): number {
-    const getPub = questions.filter((ques: Question): boolean => ques.published == true);
+    const getPub = questions.filter((ques: Question): boolean => ques.published);
     const pubSum = getPub.reduce((currTotal: number, que: Question): number => currTotal + que.points, 0);
     return pubSum;
     //array.splice (pos, value, amt to replace) used to insert at a specific ifx
@@ -154,7 +154,7 @@ export function sameType(questions: Question[]): boolean {
         return true;
     }
     let firstType: QuestionType = questions[0].type;
-    const not = false;
+   // const not = false;
    
     const allType = questions.every((question: Question): boolean => question.type == firstType)
     return allType;
@@ -236,15 +236,20 @@ export function editOption(
 ): Question[] {
     const changeTarget = questions.map((ques: Question): Question =>
         ques.id == targetId ? {...ques, options: targetOptionIndex == -1 ? [...ques.options, newOption] //if -1 push
-                          : ques.options.with(targetOptionIndex, newOption) }: ques     //otherwise replace
-                                                                                        //lastly have normal return
-    );              //spllice muatets the array so we must use with
+                           
+        : ques.options.map((option: string, index: number): string => index == targetOptionIndex ? newOption: option)} 
+        
+        : ques//otherwise replace
+                //using  and a second paramater auto iterates so we map like normal and 
+                // push the newOption if the idx is the same                                                        //lastly have normal return
+);              //spllice muatets the array so we must use with
                     //push returns a number so we need to add using spread 
 
                     //I messed up bc I was returning a number by using push and not wrapping the options clone in []
 
     return changeTarget;
 }
+///ques.options.with(targetOptionIndex, newOption) }: ques  
 
 //function checkId()
 
