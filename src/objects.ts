@@ -16,6 +16,9 @@ export function makeBlankQuestion(
     return {id: id, name: name, type: type, body: "", expected: "",
         options: [], points: 1, published: false};
 }
+
+
+
 //An interface serves as a blueprint for an object.
 //You could just declare objects willy nilly but using an interface
 //Allows u to enforce some type of rulss
