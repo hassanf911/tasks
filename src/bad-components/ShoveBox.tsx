@@ -1,11 +1,11 @@
 import React, { useState } from "react";
 import { Button } from "react-bootstrap";
 
-interface BoxLog{
+interface BoxLog {
     setPosition: (newPosition: number) => void;
     position: number;
 }
-function ShoveBoxButton({setPosition, position}: BoxLog) {
+function ShoveBoxButton({ setPosition, position }: BoxLog) {
     return (
         <Button
             onClick={() => {
@@ -17,10 +17,7 @@ function ShoveBoxButton({setPosition, position}: BoxLog) {
     );
 }
 
-function MoveableBox({position}: BoxLog
-
-): React.JSX.Element {
-
+function MoveableBox({ position }: BoxLog): React.JSX.Element {
     return (
         <div
             data-testid="moveable-box"
@@ -37,31 +34,26 @@ function MoveableBox({position}: BoxLog
     );
 }
 
-export function ShoveBox(
-
-): React.JSX.Element {
-    
-        const [position, setPosition] = useState<number>(10);
-      // const box = MoveableBox();
-        return (
+export function ShoveBox(): React.JSX.Element {
+    const [position, setPosition] = useState<number>(10);
+    // const box = MoveableBox();
+    return (
         <div>
             <h3>Shove Box</h3>
-             <span>The box is at: {position}</span>
+            <span>The box is at: {position}</span>
             <div>
                 <ShoveBoxButton
                     position={position}
                     setPosition={setPosition}
                 ></ShoveBoxButton>
-                <MoveableBox
-                    position = {position}
-                    setPosition = {setPosition}
-                    >
-                </MoveableBox>
-            </div> 
+                <MoveableBox position={position} setPosition={setPosition} />
+            </div>
         </div>
     );
 }
-{/* I couldnt fighure out how to do this using an embedded interface
+{
+    /* I couldnt fighure out how to do this using an embedded interface
     At the end I realzie to fix the box const requiring paramaeters
     u can just call a Moveable Box component in the final return
-    maybe try redoing this with interfaces but use the mvoveable box component?*/}
+    maybe try redoing this with interfaces but use the mvoveable box component?*/
+}

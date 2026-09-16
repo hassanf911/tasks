@@ -4,20 +4,26 @@ import { Button } from "react-bootstrap";
 export function StartAttempt(): React.JSX.Element {
     const [attempts, setAttempts] = useState<number>(4);
     const [progress, setProgress] = useState<boolean>(false);
- 
-   function incrAttempts(): void{
-        setAttempts(attempts+1);
-   }
-   function decrAttempts(): void{
-        setAttempts(attempts-1);
-   }
-    
+
+    function incrAttempts(): void {
+        setAttempts(attempts + 1);
+    }
+    function decrAttempts(): void {
+        setAttempts(attempts - 1);
+    }
+
     return (
         <span>
-            
             <div>Attempts: {attempts}</div>
-            <Button onClick ={()  => {  setProgress(true) 
-                                        decrAttempts()}} disabled = {progress || attempts ==0}>. {/* This logic  (disabled ||) determines wheter the click is allowed*/}
+            <Button
+                onClick={() => {
+                    setProgress(true);
+                    decrAttempts();
+                }}
+                disabled={progress || attempts == 0}
+            >
+                .{" "}
+                {/* This logic  (disabled ||) determines wheter the click is allowed*/}
                 Start Quiz
             </Button>
             {/* SO theres 2 diff  formats for delayed function calls. If u want to call the function on values u use
@@ -30,27 +36,30 @@ export function StartAttempt(): React.JSX.Element {
             or nonspecific.
             */}
 
-            <Button onClick ={() => {setProgress(false)}} disabled ={!progress}>
-               Stop Quiz
+            <Button
+                onClick={() => {
+                    setProgress(false);
+                }}
+                disabled={!progress}
+            >
+                Stop Quiz
             </Button>
-           <Button onClick = {() => {incrAttempts()}} disabled = {progress}>Mulligan</Button>
+            <Button
+                onClick={() => {
+                    incrAttempts();
+                }}
+                disabled={progress}
+            >
+                Mulligan
+            </Button>
             {/*Our initally disabled button. We create a mini function that uses a te,p disabled value
             <Button onClick = {incrAttempts} > Mulligan</Button>
             */}
-           
 
             {/*<Button onClick ={() => {incrAttempts}} disabled ={progress}> Stop Quiz
             </Button>
             WAY TO have render condiitons with an arrow function
             */}
-
-
-
-            
-        
         </span>
-        
-      
-      
-    )
+    );
 }

@@ -1,49 +1,47 @@
+import React, { useState } from "react";
+import { Button, Row, Col } from "react-bootstrap";
 
-    import React, { useState } from "react";
-    import { Button, Row, Col } from "react-bootstrap";
-
-    const PEOPLE = [
-        "Alan Turing",
-        "Grace Hopper",
-        "Ada Lovelace",
-        "Charles Babbage",
-        "Barbara Liskov",
-        "Margaret Hamilton",
-    ];
-// Hint: You will want to modify the signature and binding of one 
+const PEOPLE = [
+    "Alan Turing",
+    "Grace Hopper",
+    "Ada Lovelace",
+    "Charles Babbage",
+    "Barbara Liskov",
+    "Margaret Hamilton",
+];
+// Hint: You will want to modify the signature and binding of one
 // of the inner helper functions.
-    export function ChooseTeam(): React.JSX.Element {
-        const [allOptions, setAllOptions] = useState<string[]>(PEOPLE);
-        const [team, setTeam] = useState<string[]>([]);
-       
-        function chooseMember(newMember: string) {
-            setTeam([...team, newMember]);
+export function ChooseTeam(): React.JSX.Element {
+    const [allOptions, setAllOptions] = useState<string[]>(PEOPLE);
+    const [team, setTeam] = useState<string[]>([]);
 
-            setAllOptions(allOptions);
-           
-        }
+    function chooseMember(newMember: string) {
+        setTeam([...team, newMember]);
 
-        function clearTeam() {
-            
-             setTeam([]);
-            
-            
-        }
+        setAllOptions(allOptions);
+    }
 
-        return (
-            <div>
-                <h3>Choose Team</h3>
-                <Row>
-                    <Col>
-                        {allOptions.map((option: string) => (
-                            <div key={option} style={{ marginBottom: "4px" }}>
-                              
-                                
-                                <Button onClick = {() => {chooseMember(option)}} size ="sm">
-                                        {option}
-                                </Button>
-                                
-                              {/*  The sisue was that chooseMember returns void
+    function clearTeam() {
+        setTeam([]);
+    }
+
+    return (
+        <div>
+            <h3>Choose Team</h3>
+            <Row>
+                <Col>
+                    {allOptions.map((option: string) => (
+                        <div key={option} style={{ marginBottom: "4px" }}>
+                            <Button
+                                onClick={() => {
+                                    chooseMember(option);
+                                }}
+                                size="sm"
+                            >
+                                {option}
+                            </Button>
+
+                            {/*  The sisue was that chooseMember returns void
                               So onclick was essentially calling void
                               The solution was to give onClick a function that it can call with option when clicked
                               <input   type = "text"  onChange ={(event) => setTeam([event.target.value])} />
@@ -55,27 +53,27 @@
                                     {option}
                                 </Button>
                                 */}
-                            </div>
-                        ))}
-                    </Col>
-                    <Col>
-                        <strong>Team:</strong>
-                        {team.map((member: string) => (
-                            <li key={member}>{member}</li>
-                        ))}
-                        <Button onClick={clearTeam}>Clear Team</Button>
-                    </Col>
-                </Row>
-            </div>
-        );
-    }
+                        </div>
+                    ))}
+                </Col>
+                <Col>
+                    <strong>Team:</strong>
+                    {team.map((member: string) => (
+                        <li key={member}>{member}</li>
+                    ))}
+                    <Button onClick={clearTeam}>Clear Team</Button>
+                </Col>
+            </Row>
+        </div>
+    );
+}
 
 //An interface holds a set of fields with varying types
 //I made an interface to hold our states and also initiated them in the parent component
 //This allows us to share states across child components
 //Essentially, we pass our declared states from the main component
-// as fields for an interface. 
-// Since the state is now a field, it can be used/accesses as paramaters 
+// as fields for an interface.
+// Since the state is now a field, it can be used/accesses as paramaters
 // by a 'closure function '
 //The closure function lets us access variables from an outer scope
 //So it takes them in as paramaters (props) and returns the interface.
