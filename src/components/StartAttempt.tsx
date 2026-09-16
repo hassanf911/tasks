@@ -4,7 +4,7 @@ import { Button } from "react-bootstrap";
 export function StartAttempt(): React.JSX.Element {
     const [attempts, setAttempts] = useState<number>(4);
     const [progress, setProgress] = useState<boolean>(false);
-  
+ 
    function incrAttempts(): void{
         setAttempts(attempts+1);
    }
@@ -27,7 +27,7 @@ export function StartAttempt(): React.JSX.Element {
             then { condition && what to show}
             Main idea: When we have an => inside the first button, we NEED to add a () after each func\
             Theres two ways to initalize a button hook, specific with condiitons and changing states 
-            or nonspecific
+            or nonspecific.
             */}
 
             <Button onClick ={() => {setProgress(false)}} disabled ={!progress}>
@@ -38,6 +38,11 @@ export function StartAttempt(): React.JSX.Element {
             <Button onClick = {incrAttempts} > Mulligan</Button>
             */}
            
+
+            {/*<Button onClick ={() => {incrAttempts}} disabled ={progress}> Stop Quiz
+            </Button>
+            WAY TO have render condiitons with an arrow function
+            */}
 
 
 

@@ -5,12 +5,16 @@ import { Container } from "react-bootstrap";
 import { Row } from "react-bootstrap";
 import { Col } from "react-bootstrap";
 //import { img } from "react-bootstrap";
-import { ChangeType } from "./components/ChangeType";
-import { RevealAnswer } from "./components/RevealAnswer";
-import { StartAttempt } from "./components/StartAttempt";
+//import { ChangeType } from "./components/ChangeType";
+//import { RevealAnswer } from "./components/RevealAnswer";
+//import { StartAttempt } from "./components/StartAttempt";
 //import { TwoDice } from "./components/TwoDice";
-import { CycleHoliday } from "./components/CycleHoliday";
-import { Counter } from "./components/Counter";
+//import { CycleHoliday } from "./components/CycleHoliday";
+//import { Counter } from "./components/Counter";
+//import { DoubleHalf } from "./bad-components/DoubleHalf";
+//import { ColoredBox } from "./bad-components/ColoredBox";
+//import { ShoveBox } from "./bad-components/ShoveBox";
+//import { ChooseTeam } from "./bad-components/ChooseTeam";
 
 function App(): React.JSX.Element {
     return (
@@ -68,24 +72,27 @@ function App(): React.JSX.Element {
                     </Container>
                 </div>
             </header>
-
-            <h1 style={{ backgroundColor: "Blue" }}></h1>
-            <p>
-                Edit <code>src/App.tsx</code> and save. This page will
-                automatically reload.
-            </p>
             <hr></hr>
-            <Counter></Counter> 
+            <h1>Hi</h1>
+          {/*  <DoubleHalf></DoubleHalf> */}
+            <hr></hr>
+         {/*  <ChooseTeam></ChooseTeam>8 */}
+            <hr></hr>
+         {/* <ColoredBox></ColoredBox> */}
+            <hr></hr>
+         {/* <ShoveBox></ShoveBox> */}
+            <hr></hr>
+           {/* <Counter></Counter> */}
             <hr />
-            <RevealAnswer></RevealAnswer> 
+          {/*  <RevealAnswer></RevealAnswer> */}
             <hr />
-            <StartAttempt></StartAttempt> 
+       {/*     <StartAttempt></StartAttempt> */}
             <hr />
-            {/* <TwoDice></TwoDice> */}
+          {/* <TwoDice></TwoDice> */}
             <hr />
-            <ChangeType></ChangeType>
+          {/*  <ChangeType></ChangeType> */}
             <hr />
-             <CycleHoliday></CycleHoliday> 
+            {/* <CycleHoliday></CycleHoliday> */}
         </div>
     );
 }
