@@ -24,6 +24,7 @@ export function bookEndList(numbers: number[]): number[] {
     //make sure to return the original array u removed
     //const firstLast = numbers.filter((num: number): boolean => num[i] === 0 || num[i]===-1 );
 
+
     // const lowPrices = prices.filter((price: number): boolean => price < 10);
     //const doubled = prices.map((price: number): number => price * 2);
     //console.log(doubled);

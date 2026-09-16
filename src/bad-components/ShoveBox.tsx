@@ -45,7 +45,7 @@ export function ShoveBox(
       // const box = MoveableBox();
         return (
         <div>
-            <p>Shove Box</p>
+            <h3>Shove Box</h3>
              <span>The box is at: {position}</span>
             <div>
                 <ShoveBoxButton
