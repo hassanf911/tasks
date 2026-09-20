@@ -43,6 +43,7 @@ export function ChooseTeam(): React.JSX.Element {
 
                             {/*  The sisue was that chooseMember returns void
                               So onclick was essentially calling void
+                              we mapped to get the options then render using the option at that idx
                               The solution was to give onClick a function that it can call with option when clicked
                               <input   type = "text"  onChange ={(event) => setTeam([event.target.value])} />
                                 <Button onClick = {() => chooseMember(team)}>
@@ -70,7 +71,7 @@ export function ChooseTeam(): React.JSX.Element {
 
 //An interface holds a set of fields with varying types
 //I made an interface to hold our states and also initiated them in the parent component
-//This allows us to share states across child components
+//This al>lows us to share states across child components
 //Essentially, we pass our declared states from the main component
 // as fields for an interface.
 // Since the state is now a field, it can be used/accesses as paramaters
@@ -83,3 +84,13 @@ export function ChooseTeam(): React.JSX.Element {
 // move the state into a parent component -> make its state variables paramaters for an interface >
 // pass its state variable as paramaters for a child component function  using closures  > pass the state as attributes
 //for those function calls in the mparent comp
+//<Form.Check
+
+//            id = "is-notEdit-mode"
+//    label = "Disable"
+//         checked = {isEditable}
+//       onChange ={changeMode}
+//   />
+// We needed to conditionally render the name info in not edit mode
+//and then the textbox in edit mode
+//AND THEN we eneded to conditonally render the student checkbox only in edit
